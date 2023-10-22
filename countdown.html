@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+        }
+
+        .countdown div {
+            margin: 10px;
+            padding: 10px;
+            font-size: 30px;
+            border: 1px solid #333;
+            width: 60px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+h1{
+     background-color: blue;
+border: none;
+     color: beige;
+ margin-left: 34%;
+margin-bottom: 2%; 
+padding: 10px; 
+width: 200px;
+text-align: center;
+
+}   
+   </style>
+</head>
+<body>
+    <h1> 
+   Time Left is : 
+    </h1>         
+     
+    <div class="countdown">
+        <div id="days">00</div>
+        <div id="hours">00</div>
+        <div id="minutes">00</div>
+        <div id="seconds">00</div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("2023-10-15T23:59:59").getTime();
+            const currentDate = new Date().getTime();
+            const timeLeft = targetDate - currentDate;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
